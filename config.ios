@@ -1,0 +1,17 @@
+conf t
+iox
+app-hosting appid guestshell
+ app-vnic management guest-interface 0
+end
+
+guestshell enable
+
+! EEM configuration
+conf t
+event manager applet MAC_LOG_VLAN10 authorization bypass
+ description EEM cron scheduler for MAC logging python script
+ event timer cron cron-entry "*/5 * * * *"
+ action 0001 cli command "enable"
+ action 0002 cli command "terminal length 0"
+ action 0003 cli command "guestshell run python3 bootflash:/guest-share/mac_log.py 10"
+end
