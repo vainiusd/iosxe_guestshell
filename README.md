@@ -56,13 +56,13 @@ Check iox service status. All should be running.
 ### Example logs
 MAC addresses exist.
 ```
-Oct  3 15:45:04.252: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknown TTY): Start of MAC logging script for VLAN 1020
-Oct  3 15:45:05.483: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknown TTY): vlan-id=1020, mac=0001.0002.0003, interface=Gi1/0/16
-Oct  3 15:45:11.023: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknown TTY): End of MAC logging script for VLAN 1020
+Oct  3 15:45:04.252: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknown TTY): event-type="MAC logging start", vlan-id=1020
+Oct  3 15:45:05.483: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknown TTY): event-type="MAC info", vlan-id=1020, mac=0001.0002.0003, interface=Gi1/0/16
+Oct  3 15:45:11.023: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknown TTY): event-type="MAC logging end", vlan-id=1020
 ```
 No MAC addresses on switch.
 ```
-Oct  3 15:10:04.047: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknownTTY): Start of MAC logging script for VLAN 1020
-Oct  3 15:10:05.278: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknownTTY): No MAC addresses found in VLAN 1020
-Oct  3 15:10:05.894: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknownTTY): End of MAC logging script for VLAN 1020
+Oct  3 15:10:04.047: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknownTTY): event-type="MAC logging start", vlan-id=1020
+Oct  3 15:10:05.278: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknownTTY): event-type="No MAC info", vlan-id=1020
+Oct  3 15:10:05.894: %SYS-6-USERLOG_INFO: Message from tty73(user id: shxUnknownTTY): event-type="MAC logging end", vlan-id=1020
 ```

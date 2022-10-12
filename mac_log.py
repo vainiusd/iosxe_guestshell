@@ -17,7 +17,7 @@ if vlan not in range(1,4095):
 syslog_level = 6
 
 # Start log
-nul = cli.execute('send log 6 Start of MAC logging script for VLAN {}'.format(vlan))
+nul = cli.execute('send log 6 event-type="MAC logging start", vlan-id={}'.format(vlan))
 
 # Collecting MAC address table
 # Example command:
@@ -35,11 +35,11 @@ for line in lines:
 	# a[2] = "DYNAMIC"
 	# a[3] = Interface
   if len(a)==4:
-    msg = 'vlan-id={}, mac={}, interface={}'.format(a[0], a[1], a[3])
+    msg = 'event-type="MAC info", vlan-id={}, mac={}, interface={}'.format(a[0], a[1], a[3])
     nul = cli.execute('send log {} {}'.format(syslog_level, msg))
     no_mac = False
 if no_mac:
-  nul = cli.execute('send log 6 No MAC addresses found in VLAN {}'.format(vlan))
+  nul = cli.execute('send log 6 event-type="No MAC info", vlan-id={}'.format(vlan))
 
 # End log
-nul = cli.execute('send log 6 End of MAC logging script for VLAN {}'.format(vlan))
+nul = cli.execute('send log 6 event-type="MAC logging end", vlan-id={}'.format(vlan))
