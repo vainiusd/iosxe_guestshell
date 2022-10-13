@@ -15,6 +15,10 @@
 conf t
 iox
 app-hosting appid guestshell
+ app-resource profile custom
+ persist-disk 20
+ cpu 800
+ memory 256
  app-vnic management guest-interface 0
 end
 ! Wait until iox-service is running
