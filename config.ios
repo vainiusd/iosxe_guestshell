@@ -18,4 +18,5 @@ event manager applet MAC_LOG_VLAN10 authorization bypass
  action 0001 cli command "enable"
  action 0002 cli command "terminal length 0"
  action 0003 cli command "guestshell run python3 bootflash:/guest-share/mac_log.py 10"
+ action 0004 cli command "guestshell run bootflash:/guest-share/bug_workaround.sh"
 end

@@ -6,6 +6,7 @@
 - EEM Cron initiates a python script in guesthell
 - Script collects MAC address table dynamic entries for a specified VLAN
 - Script parses MAC address table and forwards to syslog as K,V pairs.
+- Additional shell script is run to workaround Cisco guestshell storage issues
 
 ## Deployment
 
@@ -31,8 +32,17 @@ guestshell enable
 [guestshell@guestshell ~]$ cd /bootflash/guest-share/
 [guestshell@guestshell guest-share]$ vi mac_log.py
 < -- paste script -->
+[guestshell@guestshell guest-share]$ chmod u+x mac_log.py
 ```
-3. Configure EEM. One applet per VLAN or add additonal actions per logged VLAN
+3. Copy/create shell script
+```
+# guestshell run bash
+[guestshell@guestshell ~]$ cd /bootflash/guest-share/
+[guestshell@guestshell guest-share]$ vi bug_workaround.sh
+< -- paste script -->
+[guestshell@guestshell guest-share]$ chmod u+x bug_workaround.sh
+```
+4. Configure EEM. One applet per VLAN or add additonal actions per logged VLAN
 ```
 ! Replace ####
 conf t
